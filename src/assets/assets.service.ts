@@ -9,14 +9,14 @@ export class AssetsService {
   constructor(@InjectModel(Asset.name) private assetSchema: Model<Asset>) {}
 
   create(createAssetDto: CreateAssetDto) {
-    return 'This action adds a new asset';
+    return this.assetSchema.create(createAssetDto);
   }
 
   findAll() {
-    return `This action returns all assets`;
+    return this.assetSchema.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} asset`;
+  findOne(symbol: string) {
+    return this.assetSchema.findOne({ symbol });;
   }
 }
